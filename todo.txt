@@ -1,0 +1,73 @@
+declub
+	praesidia
+		per jaar praesidium oplijsten
+	geschiedenis
+		schachtencursus tekst
+	jaarboeken
+		jaarboeken uit drive
+	kiesboeken
+		kiesboeken uit drive
+club boom
+	boom verplaatsbaar maken binnen max scherm
+cantus
+	liederenboekjes
+		boekjes uit drive zetten
+		liederenboekje aanmaken
+	liederen
+		liederen toevoegen
+		db toevoegen
+		info toevoegen
+		bis toevoegen ?
+evenementen
+	data
+		fb events uitlezen en toevoegen
+	foto's
+		album framework zoeken
+		foto's toevoegen
+	andere events
+		onderverdeling maken
+algemeen
+	statuten
+		statuten toevoegen
+	ander pagina's
+AA
+	aanwezigheden
+		na events aanmaken
+		oplijsting aanwezigheid per event
+	Verslagen
+		verslagen uit drive zetten
+SM
+	Schachten
+		add status
+	Doop
+		Info over doop
+	Ontgroening
+		taken toevoegen per schacht
+	schachtencursus
+		schachtencursus oplijsting uit drive
+Q
+	Kassa
+		overzicht
+	stock
+		overzicht
+		add
+		edit
+		remove (/event)
+	betalingen
+		overzicht
+		add (/event)
+		edit
+		remove
+	uitgave
+		overzicht
+		add
+		edit
+		remove
+
+heimdall
+	rangen
+		overzicht rangen
+	stemrecht
+		overzicht /persoon
+
+	
