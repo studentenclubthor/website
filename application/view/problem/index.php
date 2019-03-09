@@ -1,5 +1,5 @@
 <div style="position: fixed;z-index:-1;height:100%;width:100%">
-	<iframe frameborder="0" height="100%" width="100%" src="https://youtube.com/embed/dQw4w9WgXcQ?autoplay=1&controls=0&showinfo=0&autohide=1"></iframe>
+	<iframe frameborder="0" autoplay="1" height="100%" width="100%" src="https://youtube.com/embed/dQw4w9WgXcQ"></iframe>
 </div>
 
 <center class="text-danger">

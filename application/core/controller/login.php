@@ -28,7 +28,10 @@ class Login extends Controller{
 			$remember = strip_tags($remember);
 			$password = md5($password);
 			$result = $this->model->login($email, $password, $remember);
+			// var_dump($result);
+			// exit;
 			if($result) {
+				// echo 'result';
 				if(isset($_SESSION['redirecturl'])) {
 					header("Location: ".$_SESSION['redirecturl']);
 					die();
@@ -39,13 +42,36 @@ class Login extends Controller{
 				}
 			}
 			else {
+				// echo 'no result';
 				$data['errors'] = array(array("Email and Password do not match, Please try again"));
 				
 					header("Location: " . URL);
 					die();
 			}
 		}
+		echo('no post');
 		return $data;
+	}
+	
+	public function create(){
+		if (!empty($_POST)) {
+			$data['post'] = $_POST; 
+			$voornaam = $_POST['voornaam'];
+			$naam = $_POST['naam'];
+			$email = $_POST['email'];
+			$password = $_POST['password'];
+			$password = md5($password);
+			if($result = $this->model->getPersoon($voornaam . ' ' . $naam)){
+				if($result['0']->paswoord){
+					// echo 'already exists';
+				}
+				else{	
+					$this->model->editPersoon($result['0']->id,$voornaam,$naam,$email,$password);
+					$this->model->login($email, $password, $remember);
+				}
+			}
+		}
+		header('Location: ' . URL . "home");
 	}
 	
 	public function forgot() {
@@ -63,11 +89,7 @@ class Login extends Controller{
 				// Errors
 				$data['errors'] = $v->errors();
 			}
-		}
-		$data['ep_title'] = "Forgot Password"; //setting title name
-		$data['view_page'] = "users/forgot.php"; //controller view page
-		$data['ep_header'] = $GLOBALS['ep_header']; //header view (Also Ex: "header.php")
-		$data['ep_footer'] = $GLOBALS['ep_footer']; //footer view 
+		} 
 		return $data;		
 	}
 	

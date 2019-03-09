@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col col-md-12 text-center">
 			<div class="row">
-				<div class ="col col-1 col-xs-offset-8">
+				<div class ="col col-1 offset-sm-8">
 					<button class="btn waves-effect waves-light light-blue darken-4" onclick="popItUp('link')" style="margin-top: 20px;">
 						<i class="material-icons right">link</i>
 					</button>
@@ -18,12 +18,12 @@
 			<div class="row">
 				<div class="popup Nshows" id="link" onclick="popItUp('link')">
 				</div>
-				<div class="col  col-xs-10 col-xs-offset-1 col-md-7 col-md-offset-1 Nshows myPopup link" id="link">
+				<div class="col  col-xs-10 offset-sm-1 col-md-7 offset-md-1 Nshows myPopup link" id="link">
 					<h3>Link houder</h3>
 					<br>
 					<form action="<?php echo URL . 'abactis\addHouder'; ?>" method="post" class="col-s12">
 						<div class="input-field row">
-							<div class="col col-xs-6 col-xs-offset-1 col-md-4 col-md-offset-3">
+							<div class="col col-xs-6 offset-sm-1 col-md-4 offset-md-3">
 								<input class="autocomplete" id="persoon" name="houder" type="text" placeholder="houder" >
 								<input class="autocomplete" id="titel" name="titel" type="text" placeholder="titel">
 								<input name="jaar" type="text" placeholder="jaar" value="<?php echo date("Y"); ?>">
@@ -44,12 +44,12 @@
 				</div>
 				<div class="popup Nshows" id="add" onclick="popItUp('add')">
 				</div>
-				<div class="col  col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3 Nshows myPopup add" id="add">
+				<div class="col  col-xs-10 offset-sm-1 col-md-6 offset-md-3 Nshows myPopup add" id="add">
 					<h3>Add titel</h3>
 					<br>
 					<form action="<?php echo URL . 'abactis\addTitel'; ?>" method="post" class="col-s12">
 						<div class="input-field row">
-							<div class="col col-xs-6 col-xs-offset-1 col-md-4 col-md-offset-3">
+							<div class="col col-xs-6 offset-sm-1 col-md-4 offset-md-3">
 								<input class="autocomplete" name="naam" type="text" placeholder="naam" >
 								</div>
 							<div class="col col-xs-4 col-md-4">
@@ -66,12 +66,12 @@
 				</div>
 				<div class="popup Nshows" id="editTitel" onclick="popItUp('editTitel')">
 				</div>
-				<div class="col  col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3 Nshows myPopup editTitel" id="editTitel">
+				<div class="col  col-xs-10 offset-sm-1 col-md-6 offset-md-3 Nshows myPopup editTitel" id="editTitel">
 					<h3>Edit titel</h3>
 					<br>
 					<form action="<?php echo URL . 'abactis\editTitel'; ?>" method="post" class="col-s12">
 						<div class="input-field row">
-							<div class="col col-xs-6 col-xs-offset-1 col-md-4 col-md-offset-3">
+							<div class="col col-xs-6 offset-sm-1 col-md-4 offset-md-3">
 								<input class="autocomplete" id="titel" name="naam" type="text" placeholder="naam" >
 								</div>
 							<div class="col col-xs-4 col-md-4">
@@ -88,12 +88,12 @@
 				</div>
 				<div class="popup Nshows" id="edit" onclick="popItUp('edit')">
 				</div>
-				<div class="col  col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3 Nshows myPopup edit" id="edit">
+				<div class="col  col-xs-10 offset-sm-1 col-md-6 offset-md-3 Nshows myPopup edit" id="edit">
 					<h3>Edit Houder</h3>
 					<br>
 					<form class="link edit" action="" method="post" class="col-s12">
 						<div class="input-field row">
-							<div class="col col-xs-6 col-xs-offset-1 col-md-4 col-md-offset-3">
+							<div class="col col-xs-6 offset-sm-1 col-md-4 offset-md-3">
 								<input class="autocomplete link edit" id="persoon" name="houder" type="text" placeholder="houder" >
 								<input class="autocomplete link edit" id="titel" name="titel" type="text" placeholder="titel">
 								<input class="link edit" name="jaar" type="text" placeholder="jaar">
@@ -116,15 +116,15 @@
 				</div>
 				<div class="popup Nshows" id="remove" onclick="popItUp('remove')">
 				</div>
-				<div class="col col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-2 Nshows myPopup remove" id="remove">
+				<div class="col col-xs-10 offset-sm-1 col-md-6 offset-md-2 Nshows myPopup remove" id="remove">
 					<h3>Remove titel ?</h3>
 					<br>
 					<form class="link remove" action="" method="post" class="col-s12">
 						<div class="input-field row">
-							<div class="col col-xs-6 col-xs-offset-3 remove">
+							<div class="col col-xs-6 offset-sm-3 remove">
 								<p>remove </p><p class="link remove"></p><p> van </p><p class="link remove"></p>
 							</div>
-							<div class="col col-xs-4 col-xs-offset-4">
+							<div class="col col-xs-4 offset-sm-4">
 								<button class="btn waves-effect waves-light light-blue darken-4" style="margin-top: 20px;">
 									<i class="material-icons right">yes</i>
 								</button>
@@ -137,7 +137,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="recuringTable col col-md-8 col-md-offset-2">
+				<div class="recuringTable col col-md-8 offset-md-2">
 					<h1>alle titel houders</h1>
 					<table>
 						<?php foreach($houders as $houder ){

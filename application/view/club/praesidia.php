@@ -106,7 +106,7 @@
 		if(! topBool){
 			console.log("top!");
 			$.ajax({
-				url: ("http://studentenclubthor.ddns.net/ajax/praesidiaTop/" + amount + "/" + offsetTop)
+				url: (window.location.origin + "/ajax/praesidiaTop/" + amount + "/" + offsetTop)
 			})
 			.done(function(html) {
 				addElements('#add-praesidia',html);
@@ -119,7 +119,7 @@
 		if(! botBool){
 			console.log("bot!");
 			var result = $.ajax({
-				url: ("http://studentenclubthor.ddns.net/ajax/praesidiaTop/" + amount + "/" + offset)
+				url: (window.location.origin + "/ajax/praesidiaTop/" + amount + "/" + offset)
 			})
 			.done(function(html) {
 				addElements('#add-praesidia',html);

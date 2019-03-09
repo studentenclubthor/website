@@ -19,6 +19,13 @@ class Application
     {
         // create array with URL parts in $url
         $this->splitUrl();
+		// echo('url');
+		// var_dump($_GET);
+		// var_dump($_REQUEST);
+		// var_dump($_SERVER['QUERY_STRING']);
+		// echo($_GET['url']);
+		// echo($URL);
+		// exit;
         // check for controller: no controller given ? then load start-page
         if (!$this->url_controller) {
 
@@ -88,6 +95,7 @@ class Application
             // echo 'Controller: ' . $this->url_controller . '<br>';
             // echo 'Action: ' . $this->url_action . '<br>';
             // echo 'Parameters: ' . print_r($this->url_params, true) . '<br>';
+			// var_dump($_POST);
         }
     }
 }

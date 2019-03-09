@@ -62,6 +62,12 @@
 				</div>
 			</li><?php if(isset($_COOKIE["thorsessionid"])){ echo
 			('<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i class="fa fa-list"></i> Stem</a>
+				<div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
+					<a class="nav-link bg-dark" href="'. URL .'stem"><i class="fa fa-link"></i> stem</a>
+				</div>
+			</li>
+			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i class="fa fa-list"></i> A A</a>
 				<div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
 					<a class="nav-link bg-dark" href="'. URL .'abactis"><i class="fa fa-link"></i> Persoon</a>
@@ -101,6 +107,7 @@
 				<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i class="fa fa-user"></i> User</a>
 				<div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
 					<a class="nav-link bg-dark" href="'. URL .'Profile">Profile</a>
+					<a class="nav-link bg-dark" href="'. URL .'requests">requests</a>
 					<a class="nav-link bg-dark" href="'. URL .'logout">Logout</a>
 				</div>
 			</li>');

@@ -7,7 +7,8 @@
                         <div class="intro-info-content text-center">
                             <h1 class="mb-2">Studentenclub THOR</h1>
                             <h5 class="font-up mb-3 mt-1">Studentikoze vriendenclub sinds 2012</h5>
-							<p>Om onszelf even kort voor te stellen, zouden wij u graag onze waarden en normen mee willen geven zodat u zo een beeld over ons kan maken.</p><p> We zijn een kleine exclusieve studentenclub van vrienden, waar iedereen elkaar al kent vanuit het studentikoze leven te leuven. We staan dan ook in om deze vriendschap door de club te bewaren doorheen de jaren, zelfs na onze studententijd. We houden het steeds op een klein bestuur dat zich wil inzetten om ellke maand toch minstens 1 maal samen te komen, dit door een recreationele activiteit of een cantus. Hier Gaan we dan ook steeds uit van een kleine opkomst omdat kleinere evenementen ook gezellig kunnen zijn.</p>
+							<p>Om onszelf even kort voor te stellen, zouden wij u graag onze waarden en normen mee willen geven zodat u zo een beeld over ons kan maken.</p>
+							<p> We zijn een kleine exclusieve studentenclub van vrienden, waar iedereen elkaar al kent vanuit het studentikoze leven te leuven. We staan dan ook in om deze vriendschap door de club te bewaren doorheen de jaren, zelfs na onze studententijd. We houden het steeds op een klein bestuur dat zich wil inzetten om elke maand toch minstens 1 maal samen te komen, dit door een recreationele activiteit of een cantus. Hier Gaan we dan ook steeds uit van een kleine opkomst omdat kleinere evenementen ook gezellig kunnen zijn.</p>
 						</div>
                     </div>
                 </div>
@@ -61,7 +62,7 @@
 						}
 					}
 					echo " col-4'>";
-						echo "<img class='profile' src='". URL . "img/personen/" . $p->voornaam . "_" . $p->achternaam . ".jpg' />";
+						echo "<img class='profile' src=". '"' . URL . "img/personen/" . $p->voornaam . "_" . $p->achternaam . ".jpg" . '"' . " />";
 						echo "<h4>" . $p->cleanName . "</h4>";
 						echo "<div class='heading-line'></div>";
 						echo "<p>" . $p->voornaam . " " . $p->achternaam . "</p>";

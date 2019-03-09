@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col col-md-12 text-center">
 			<div class="row">
-				<div class ="col col-1 col-xs-offset-8">
+				<div class ="col col-1 offset-sm-8">
 					<button class="btn waves-effect waves-light light-blue darken-4" onclick="popItUp('add')" style="margin-top: 20px;">
 						<i class="material-icons right">link</i>
 					</button>
@@ -11,12 +11,12 @@
 			<div class="row">
 				<div class="popup Nshows" id="add" onclick="popItUp('add')">
 				</div>
-				<div class="col  col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3 Nshows myPopup add" id="add">
+				<div class="col  col-xs-10 offset-sm-1 col-md-6 offset-md-3 Nshows myPopup add" id="add">
 					<h3>Link peter / meter</h3>
 					<br>
 					<form action="<?php echo URL . 'abactis\addPeter'; ?>" method="post" class="col-s12">
 						<div class="input-field row">
-							<div class="col col-xs-6 col-xs-offset-1 col-md-4 col-md-offset-3">
+							<div class="col col-xs-6 offset-sm-1 col-md-4 offset-md-3">
 								<input class="autocomplete" id="persoon" name="peter" type="text" placeholder="Peter/Meter" >
 								<input class="autocomplete" id="persoon" name="kind" type="text" placeholder="-Kind">
 								</div>
@@ -35,12 +35,12 @@
 				</div>
 				<div class="popup Nshows" id="edit" onclick="popItUp('edit')">
 				</div>
-				<div class="col  col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3 Nshows myPopup edit" id="edit">
+				<div class="col  col-xs-10 offset-sm-1 col-md-6 offset-md-3 Nshows myPopup edit" id="edit">
 					<h3>Edit peter / meter</h3>
 					<br>
 					<form class="link edit" action="" method="post" class="col-s12">
 						<div class="input-field row">
-							<div class="col col-xs-6 col-xs-offset-1 col-md-4 col-md-offset-3">
+							<div class="col col-xs-6 offset-sm-1 col-md-4 offset-md-3">
 								<input class="autocomplete link edit" id="persoon" name="peter" type="text" value="" >
 								<input class="autocomplete link edit" id="persoon" name="kind" type="text" value="">
 								</div>
@@ -59,15 +59,15 @@
 				</div>
 				<div class="popup Nshows" id="remove" onclick="popItUp('remove')">
 				</div>
-				<div class="col  col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3 Nshows myPopup remove" id="remove">
+				<div class="col  col-xs-10 offset-sm-1 col-md-6 offset-md-3 Nshows myPopup remove" id="remove">
 					<h3>Remove peter / meter ?</h3>
 					<br>
 					<form class="link remove" action="" method="post" class="col-s12">
 						<div class="input-field row">
-							<div class="col col-xs-4 col-xs-offset-4 remove">
-								<p>remove </p><p class="link remove"></p><p> peter van <p class="link remove"></p>
+							<div class="col col-xs-4 offset-sm-4 remove">
+								<p>remove </p><p class="link remove"></p><p> peter van </p><p class="link remove"></p>
 							</div>
-							<div class="col col-xs-4 col-xs-offset-4">
+							<div class="col col-xs-4 offset-sm-4">
 								<button class="btn waves-effect waves-light light-blue darken-4 link remove" style="margin-top: 20px;">
 									<i class="material-icons right">yes</i>
 								</button>
@@ -80,7 +80,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="recuringTable col col-md-8 col-md-offset-2">
+				<div class="recuringTable col col-md-8 offset-md-2">
 					<h1>alle peter - meters</h1>
 					<table>
 						<tr>
@@ -110,13 +110,13 @@
 function fill(name,id){
 	var links = document.querySelectorAll(".link" + ("."+name));
 	if(name == "edit"){
-		links[0].action = ('<?PHP echo URL ; ?>\' + 'abactis\\editPeter\\' + id);
+		links[0].action = ('<?PHP echo URL ; ?>' + 'abactis\\editPeter\\' + id);
 		var info = document.getElementById(("peter" + id));
 		links[1].value = (info.cells[0].innerHTML + " " +info.cells[1].innerHTML);
 		links[2].value = (info.cells[2].innerHTML + " " + info.cells[3].innerHTML);
 	}
 	else if(name == "remove"){
-		links[0].action = ('<?PHP echo URL ; ?>\' + 'abactis\\deletePeter\\' + id);
+		links[0].action = ('<?PHP echo URL ; ?>' + 'abactis\\deletePeter\\' + id);
 		var info = document.getElementById(("peter" + id));
 		links[1].innerHTML = (info.cells[0].innerHTML + " " +info.cells[1].innerHTML);
 		links[2].innerHTML = (info.cells[2].innerHTML + " " + info.cells[3].innerHTML);

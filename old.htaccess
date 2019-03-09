@@ -1,0 +1,3 @@
+options +FollowSymLinks
+RewriteEngine On
+rewriteRule ^(.+)$ index.php?url=$1

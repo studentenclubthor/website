@@ -6,7 +6,37 @@ if(!empty($data['errors'])) {
 }
 ?>
 <br/>
-<div class="container user-form" style="float: left; width: 100%;"> 
+<div class="container user-form" style="float: left; width: 100%;">
+	<div class="row">
+		<div class="popup Nshows" id="create" onclick="popItUp('create')">
+		</div>
+		<div class="col  col-xs-10 offset-sm-1 col-md-7 offset-md-1 Nshows myPopup create" id="create">
+			<h3>create account</h3>
+			<br>
+			<form action="<?php echo URL . 'login\create'; ?>" method="post" class="col-s12">
+				<div class="input-field row">
+					<div class="col col-xs-6 offset-sm-1 col-md-4 offset-md-3">
+						<input name="voornaam" type="text" placeholder="voornaam">
+						<input name="naam" type="text" placeholder="naam">
+						<input name="email" type="text" placeholder="email">
+						<input name="password" type="password" placeholder="password">
+					</div>
+					<div class="col col-xs-4 col-md-4">
+						<label for="voornaam">voornaam</label>
+						<label for="naam">naam</label>
+						<label for="email">Email</label>
+						<label for="password">password </label>
+					</div>
+				</div>
+				<div class="input-field col col-xs-12">
+					<p>* Required</p>
+					<button class="btn waves-effect waves-light light-blue darken-4" type="submit" style="margin-top: 20px;">
+						<i class="material-icons right">send</i>
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
 	<div class="row">
 		<form action="<?php echo URL . 'login\login'; ?>" method="post" class="col s12">
 			<div class="row">
@@ -32,7 +62,14 @@ if(!empty($data['errors'])) {
 				<div class="col-xs-6 col-xs-offset-2 col-sm-3 col-sm-offset-4">
 					<a href='<?php echo URL; ?>login/forgot'> Forgot Password </a>
 				</div>
+				<div class="col-xs-6 col-xs-offset-2 col-sm-3 col-sm-offset-4">
+					<button class="btn waves-effect waves-light light-blue darken-4" type="button" onclick="popItUp('create')" style="margin-top: 20px;">
+						<i class="material-icons right">Create account</i>
+					</button>
+				</div>
 			</div>
 		</form>
 	</div>
 </div>
+
+<script type="text/javascript" src="<?php echo URL; ?>js/popItUp.js"></script>

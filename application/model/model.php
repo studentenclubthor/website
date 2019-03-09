@@ -38,25 +38,39 @@ class Model
         $query->execute();
 		$result = $query->fetchAll();
 		if($result){
-			session_start();
-			$result = $result[0];
-			// $data = array('sessionid' => $sessionid, 'user_id' => $result->id, 'device' => $_SERVER['HTTP_USER_AGENT'], 'ip' => $_SERVER['REMOTE_ADDR']);
-			$_SESSION["DBSesionId"] = $sessionid;
-			if($remember == "1") {
-				$cookie_name = "thorsessionid";
-				$cookie_value = $sessionid;
-				$device = $_SERVER['HTTP_USER_AGENT'];
-				$ip = $_SERVER['REMOTE_ADDR'];
-				setcookie($cookie_name, $cookie_value, time() + (7*24*60*60), "/");
-				$device = $_SERVER['HTTP_USER_AGENT'];
-				$ip = $_SERVER['REMOTE_ADDR'];
-				$query = $this->db->prepare('INSERT INTO `THOR`.`Sessie` (`cookie`, `idPersoon`, `device`, `ip`) VALUES (:cookie, :id, :device, :ip) ON DUPLICATE KEY UPDATE `cookie` = :cookie, `device` = :device, `ip` = :ip');
-				$parameters = array(':cookie' => $cookie_value, ':id' => $result->id, ':device' => $device, ':ip' => $ip);
-				$query->execute($parameters);
-				$result = $query->fetchAll();
+			if($result['0']->confirmed == '1'){
+				session_start();
+				$result = $result[0];
+				// $data = array('sessionid' => $sessionid, 'user_id' => $result->id, 'device' => $_SERVER['HTTP_USER_AGENT'], 'ip' => $_SERVER['REMOTE_ADDR']);
+				$_SESSION["DBSesionId"] = $sessionid;
+				if(true/*$remember == "0"*/) {
+					$cookie_name = "thorsessionid";
+					$cookie_value = $sessionid;
+					$device = $_SERVER['HTTP_USER_AGENT'];
+					$ip = $_SERVER['REMOTE_ADDR'];
+					setcookie($cookie_name, $cookie_value, time() + (7*24*60*60), "/");
+					$device = $_SERVER['HTTP_USER_AGENT'];
+					$ip = $_SERVER['REMOTE_ADDR'];
+					$query = $this->db->prepare('INSERT INTO `THOR`.`Sessie` (`cookie`, `idPersoon`, `device`, `ip`) VALUES (:cookie, :id, :device, :ip) ON DUPLICATE KEY UPDATE `cookie` = :cookie, `device` = :device, `ip` = :ip');
+					$parameters = array(':cookie' => $cookie_value, ':id' => $result->id, ':device' => $device, ':ip' => $ip);
+					$query->execute($parameters);
+					$result = $query->fetchAll();
+				}
 			}
 			return $result;
 		}
+	}
+	
+	public function getSession($cookie){
+		$sql = "SELECT * FROM sessie where cookie = ".'"' . $cookie .'"';
+		$query = $this->db->prepare($sql);
+		$query->execute();
+		return $query->fetchAll();
+	}
+	
+	public function getPersSess(){
+		$ses = $this->getSession($_SESSION['DBSesionId']);
+		return $this->getPersById($ses['0']->idPersoon);
 	}
 	
 	//persoon
@@ -65,10 +79,15 @@ class Model
 		$query = $this->db->prepare($sql);
 		$query->execute();
 		return $query->fetchAll();
-		// $result = $query->fetchAll();
-		// var_dump($result);
-		// return $result;
 	}
+	
+	public function getPersById($id){
+		$sql = "SELECT * FROM Persoon where id = ". $id;
+		$query = $this->db->prepare($sql);
+		$query->execute();
+		return $query->fetchAll();
+	}
+	
 	
 	public function getPersonen(){
 		$sql = "SELECT id,voornaam,achternaam,email FROM Persoon";
@@ -84,11 +103,11 @@ class Model
 		$query->execute($parameters);
 	}	
 	
-	public function editPersoon($id,$voornaam,$naam,$email){
-		$sql = "UPDATE persoon SET voornaam = :voornaam, achternaam = :naam, email = :email WHERE id = :id";
+	public function editPersoon($id,$voornaam,$naam,$email,$password,$confirmed){
+		$sql = "UPDATE persoon SET voornaam = :voornaam, achternaam = :naam, email = :email, paswoord = :password, confirmed = :confirmed WHERE id = :id";
         $query = $this->db->prepare($sql);
-        $parameters = array(':voornaam' => $voornaam, ':naam' => $naam ,':email' => $email ,':id' => $id);
-		$query->execute($parameters);
+        $parameters = array(':voornaam' => $voornaam, ':naam' => $naam ,':email' => $email ,':id' => $id, ':password' => $password, ':confirmed' => $confirmed);
+		var_dump($query->execute($parameters));
 	}
 	
 	public function deletePersoon($id){
@@ -96,6 +115,13 @@ class Model
         $query = $this->db->prepare($sql);
         $parameters = array(':id' => $id);
         $query->execute($parameters);
+	}
+	
+	public function editRequest($id,$confirmed){
+		$sql = "UPDATE persoon SET  confirmed = :confirmed WHERE id = :id";
+        $query = $this->db->prepare($sql);
+        $parameters = array(':id' => $id, ':confirmed' => $confirmed);
+		var_dump($query->execute($parameters));
 	}
 	
 	//peter
@@ -188,6 +214,13 @@ class Model
 		return $query->fetchAll();
 	}
 	
+	public function getTitels(){
+		$sql = "SELECT * FROM titel";
+		$query = $this->db->prepare($sql);
+		$query->execute();
+		return $query->fetchAll();
+	}
+	
 	public function deleteTitel($id){
         $sql = "DELETE FROM Titel WHERE id = :id";
         $query = $this->db->prepare($sql);
@@ -202,18 +235,11 @@ class Model
 		$query->execute($parameters);
 	}
 	
-	public function getTitels(){
-		$sql = "SELECT * FROM titel";
-		$query = $this->db->prepare($sql);
-		$query->execute();
-		return $query->fetchAll();
-	}
-	
 	//houderschap
 	public function getHouders(){
 		$sql = "SELECT th.id,th.verkregen,th.uitgedaan,p.voornaam,p.achternaam,t.naam FROM houderschap th join persoon p join titel t
 				WHERE th.idpersoon = p.id and th.idtitel = t.id
-				ORDER BY th.id DESC";
+				ORDER BY th.verkregen DESC, rang DESC";
 		$query = $this->db->prepare($sql);
 		$query->execute();
 		return $query->fetchAll();
@@ -252,16 +278,26 @@ class Model
 	
 	//schachten
 	public function getSchachten(){
-		$sql = "SELECT th.id,th.verkregen,th.uitgedaan,p.voornaam,p.achternaam,t.naam 
+		$sql = "SELECT h.*,t.*,p.voornaam,p.achternaam
+FROM houderschap h inner join titel t on h.idtitel = t.id inner join persoon p on h.idpersoon = p.id
+inner join
+	(SELECT idpersoon,min(rang) as r
+	FROM houderschap h inner join titel t on h.idtitel = t.id
+	group by idpersoon) as i on i.idpersoon = h.idpersoon and i.r = t.rang
+where uitgedaan = 1
+AND t.naam IN ('Preut','Schacht')
+order by rang, verkregen DESC"
+				
+				/* old query "SELECT th.id,th.verkregen,th.uitgedaan,p.voornaam,p.achternaam,t.naam 
 				FROM houderschap th join persoon p join titel t
 				WHERE th.idpersoon = p.id and th.idtitel = t.id
-				AND th.id IN (SELECT MAX(id)
+				AND th.id IN (SELECT MAX(verkregen)
 					FROM houderschap
 					GROUP BY idpersoon)
 				AND uitgedaan = 1
 				AND t.naam IN ('Preut','Schacht')
 				GROUP BY th.idpersoon
-				ORDER BY th.id DESC";
+				ORDER BY th.verkregen DESC, th.id"*/;
 		$query = $this->db->prepare($sql);
 		$query->execute();
 		return $query->fetchAll();
@@ -295,6 +331,51 @@ class Model
 		$query = $this->db->prepare($sql);
 		$query->execute();
 		return $query->fetchAll();
+		
+	}
+	
+	public function getRequests(){
+		$sql = "select * from Persoon where confirmed = 0 and paswoord is not null";
+		$query = $this->db->prepare($sql);
+		$query->execute();
+		return $query->fetchAll();
+	}
+	
+	//stem
+	
+	public function addStem($stemming,$keuze){
+		$boltz = 1 ; //return boltz
+		$persoon = $this->getPersSess()['0']->id;
+		$sql = "INSERT INTO stem (idstemming,idpersoon,keuze,boltz) VALUES (:stemming,:persoon,:keuze,:boltz)";
+        $query = $this->db->prepare($sql);
+        $parameters = array(':stemming' => $stemming, ':persoon' => $persoon, ':keuze' => $keuze, ':boltz' => $boltz);
+        $query->execute($parameters);
+	}
+	
+	public function getOpenStem(){
+		$id = $this->getPersSess()['0']->id;
+		$sql = "select st.id,doel,voornaam,achternaam
+from stemming st left join persoon p on st.idpersoon = p.id
+where st.id not in (select st.id from stem s left join stemming st on s.idstemming = st.id
+					where s.idpersoon = :id)";
+		$query = $this->db->prepare($sql);
+        $parameters = array(':id' => $id,);
+        $query->execute($parameters);
+		return $query->fetchAll();
+	}
+	
+	public function editStem(){
+		
+	}
+	
+	
+	//stemming
+	
+	public function addStemming($idpers,$doel,$start,$eind){
+		$sql = "INSERT INTO stemming (idpersoon,doel, start, eind) VALUES (:idpers, :doel, :start, :eind)";
+        $query = $this->db->prepare($sql);
+        $parameters = array(':idpers'=> $idpers, ':doel' => $doel, ':start' => $start, ':eind' => $eind);
+        $query->execute($parameters);
 	}
 	
 	

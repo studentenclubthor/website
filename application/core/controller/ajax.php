@@ -53,7 +53,7 @@ class Ajax extends Controller
 					}
 				}
 				$result = $result . " col-4'>";
-					$result = $result . "<img class='profile' src='". URL . "img/personen/" . $p->voornaam . "_" . $p->achternaam . ".jpg' />";
+					$result = $result . "<img class='profile' src=" . '"' . URL . "img/personen/" . $p->voornaam . "_" . $p->achternaam . ".jpg" . '"' . " />";
 					$result = $result . "<h4>" . $p->cleanName . "</h4>";
 					$result = $result . "<div class='heading-line'></div>";
 					$result = $result . "<p>" . $p->voornaam . " " . $p->achternaam . "</p>";
