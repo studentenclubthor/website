@@ -9,10 +9,10 @@
 			var data = {
 				"timeline": [
 					{
-						"startDate":"2009-06-27",
-						"endDate":"2010-01-01",
-						"headline":"Only text",
-						"text":"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+						"startDate":"2012-09-22",
+						"endDate":"2012-09-22",
+						"headline":"Oprichting",
+						"text":"De club werd opgericht!",
 						"asset": {
 							"asset":"",
 							"thumbnail":"",
@@ -21,37 +21,13 @@
 						}
 					},
 					{
-						"startDate":"2010-01-27",
+						"startDate":"2013-01-27",
 						"endDate":"",
-						"headline":"Text and image",
-						"text":"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+						"headline":"Eerste Lustrum",
+						"text":"Het Lustrum",
 						"asset": {
-							"asset":"img/lorempixel01.jpg",
-							"thumbnail":"img/lorempixel01.jpg",
-							"type": "image",
-							"caption":"",
-						}
-					},
-					{
-						"startDate":"2010-04-27",
-						"endDate":"",
-						"headline":"Text and image",
-						"text":"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-						"asset": {
-							"asset":"img/lorempixel01.jpg",
-							"thumbnail":"img/lorempixel01.jpg",
-							"type": "image",
-							"caption":"",
-						}
-					},
-					{
-						"startDate":"2010-05-27",
-						"endDate":"",
-						"headline":"Text and image",
-						"text":"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-						"asset": {
-							"asset":"img/lorempixel01.jpg",
-							"thumbnail":"img/lorempixel01.jpg",
+							"asset":"<?php echo URL; ?>img/schild.png",
+							"thumbnail":"<?php echo URL; ?>img/schild.png",
 							"type": "image",
 							"caption":"",
 						}
@@ -61,7 +37,7 @@
 					"zoom": 1,
 					"keyboardCommands": true,
 					"date": {
-						"language": "de",
+						"language": "nl",
 						"format": "d F Y",
 						"buttonFormat": "d.m.y"
 					}

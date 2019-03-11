@@ -774,11 +774,11 @@
 
 		if (baseData.config.date && baseData.config.date.language) {
 			switch (baseData.config.date.language) {
-				case "de":
-					Date.shortMonths = ["Jan.", "Feb.", "März", "Apr.", "Mai", "Juni", "Juli", "Aug.", "Sept.", "Okt.", "Nov.", "Dez."];
-					Date.longMonths = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
-					Date.shortDays = ["So.","Mo.", "Di.", "Mi.", "Do.", "Fr.", "Sa."];
-					Date.longDays = ["Sonntag","Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
+				case "nl":
+					Date.shortMonths = ["Jan.", "Feb.", "Mar.", "Apr.", "Mei", "Juni", "Juli", "Aug.", "Sept.", "Okt.", "Nov.", "Dec."];
+					Date.longMonths = ["Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December"];
+					Date.shortDays = ["Zo.","Ma.", "Di.", "Wo.", "Do.", "Vr.", "Za."];
+					Date.longDays = ["Zondag","Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag"];
 					break;
 			}
 		}
