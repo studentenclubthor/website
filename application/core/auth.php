@@ -7,6 +7,7 @@ class Auth extends Controller{
 		//Calling your Model class for page
 		parent::__construct();
 		
+		
 		if(isset($_SESSION["DBSesionId"])) {
 			$ifSessionExists = $this->model->checksession($_SESSION["DBSesionId"]);
 			if(! $ifSessionExists) {

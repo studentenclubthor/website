@@ -3,7 +3,7 @@
 </div>
 
 <center class="text-danger">
-	<div class="intro-info-content col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4">
+	<div class="intro-info-content col-xs-6 offset-xs-3 col-sm-4 col-sm-offset-4">
 		<h1> 404 ERROR </h1>
 		<br/>
 		<h2> Page not found </h2>

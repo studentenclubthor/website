@@ -3,7 +3,7 @@
 		<div class="col col-xs-12 text-center">
 			<?php if(isset($_COOKIE["thorsessionid"])){ echo
 			'<div class="row">
-				<div class ="col col-1 col-xs-offset-8">
+				<div class ="col col-1 offset-xs-8">
 					<button class="btn waves-effect waves-light light-blue darken-4" onclick="popItUp('."'add'".')" style="margin-top: 20px;">
 						<i class="material-icons right">add</i>
 					</button>
@@ -12,12 +12,12 @@
 			<div class="row">
 				<div class="popup Nshows" id="add" onclick="popItUp('."'add'".')">
 				</div>
-				<div class="col col-xs-8 col-xs-offset-2 myPopup Nshows add" id="add">
+				<div class="col col-xs-8 offset-xs-2 myPopup Nshows add" id="add">
 					<h3>add event</h3>
 					<br>
 					<form action="evenementen\addEvent" method="post">
 						<div class="input-field row">
-							<div class="col col-xs-8 col-xs-offset-1 col-md-6 col-md-offset-2">
+							<div class="col col-xs-8 offset-xs-1 col-md-6 offset-md-2">
 								<input id="naam" name="naam" type="text" class="validate" value="">
 								<input id="locatie" name="locatie" type="text" class="validate" value="">
 								<input id="start" name="start" type="datetime-local" class="validate" value="2017-06-01T08:30">
@@ -44,12 +44,12 @@
 				</div>
 				<div class="popup Nshows" id="edit" onclick="popItUp('."'edit'".')">
 				</div>
-				<div class="col  col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3 Nshows myPopup edit" id="edit">
+				<div class="col  col-xs-10 offset-xs-1 col-md-6 offset-md-3 Nshows myPopup edit" id="edit">
 					<h3>Edit event</h3>
 					<br>
 					<form class="link edit" action="" method="post" class="col-s12">
 						<div class="input-field row">
-							<div class="col col-xs-6 col-xs-offset-1 col-md-4 col-md-offset-3">
+							<div class="col col-xs-6 offset-xs-1 col-md-4 offset-md-3">
 								<input id="banner" name="banner" type="text" class="validate link edit" value="">
 								<input id="naam" name="naam" type="text" class="validate link edit" value="">
 								<input id="locatie" name="locatie" type="text" class="validate link edit" value="">
@@ -76,15 +76,15 @@
 				</div>
 				<div class="popup Nshows" id="remove" onclick="popItUp('."'remove'".')">
 				</div>
-				<div class="col  col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3 Nshows myPopup remove" id="remove">
+				<div class="col  col-xs-10 offset-xs-1 col-md-6 offset-md-3 Nshows myPopup remove" id="remove">
 					<h3>Remove Event?</h3>
 					<br>
 					<form class="link remove" action="" method="post" class="col-s12">
 						<div class="input-field row">
-							<div class="col col-xs-4 col-xs-offset-4 remove">
+							<div class="col col-xs-4 offset-xs-4 remove">
 								<p>remove </p><p class="link remove"></p>
 							</div>
-							<div class="col col-xs-4 col-xs-offset-4">
+							<div class="col col-xs-4 offset-xs-4">
 								<button class="btn waves-effect waves-light light-blue darken-4 link remove" style="margin-top: 20px;">
 									<i class="material-icons right">yes</i>
 								</button>

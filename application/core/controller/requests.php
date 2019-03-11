@@ -12,7 +12,6 @@ class Requests extends Auth{
 	
 	public function editRequest($id,$confirmed){
 		$this->model->editRequest($id,$confirmed);
-		exit;
 		header('Location: ' . URL . "Requests");
 	}
 	

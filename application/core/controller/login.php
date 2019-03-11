@@ -13,6 +13,10 @@ class Login extends Controller{
         require APP . 'view/_templates/footer.php';
     }
 	
+	function test(){
+		$this->model->isPraesidium();
+	}
+	
 	function login(){
 		$data = null;
 		if(isset($_GET['redirecturl'])) {
@@ -54,6 +58,7 @@ class Login extends Controller{
 	}
 	
 	public function create(){
+		var_dump($_POST);
 		if (!empty($_POST)) {
 			$data['post'] = $_POST; 
 			$voornaam = $_POST['voornaam'];
@@ -66,8 +71,8 @@ class Login extends Controller{
 					// echo 'already exists';
 				}
 				else{	
-					$this->model->editPersoon($result['0']->id,$voornaam,$naam,$email,$password);
-					$this->model->login($email, $password, $remember);
+					$this->model->editPersoon($result['0']->id,$voornaam,$naam,$email,$password,0);
+					$this->model->login($email, $password, 0);
 				}
 			}
 		}

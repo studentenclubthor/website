@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col col-md-12 text-center">
 			<div class="row">
-				<div class ="col col-1 col-xs-offset-8">
+				<div class ="col col-1 offset-xs-8">
 					<button class="btn waves-effect waves-light light-blue darken-4" onclick="popItUp('add')" style="margin-top: 20px;">
 						<i class="material-icons right">link</i>
 					</button>
@@ -11,12 +11,12 @@
 			<div class="row">
 				<div class="popup Nshows" id="add" onclick="popItUp('add')">
 				</div>
-				<div class="col  col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3 Nshows myPopup add" id="add">
+				<div class="col  col-xs-10 offset-xs-1 col-md-6 offset-md-3 Nshows myPopup add" id="add">
 					<h3>Link peter / meter</h3>
 					<br>
 					<form action="<?php echo URL . 'abactis\addPeter'; ?>" method="post" class="col-s12">
 						<div class="input-field row">
-							<div class="col col-xs-6 col-xs-offset-1 col-md-4 col-md-offset-3">
+							<div class="col col-xs-6 offset-xs-1 col-md-4 offset-md-3">
 								<input class="autocomplete" id="persoon" name="peter" type="text" placeholder="Peter/Meter" >
 								<input class="autocomplete" id="persoon" name="kind" type="text" placeholder="-Kind">
 							</div>
@@ -35,12 +35,12 @@
 				</div>
 				<div class="popup Nshows" id="edit" onclick="popItUp('edit')">
 				</div>
-				<div class="col  col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3 Nshows myPopup edit" id="edit">
+				<div class="col  col-xs-10 offset-xs-1 col-md-6 offset-md-3 Nshows myPopup edit" id="edit">
 					<h3>Edit peter / meter</h3>
 					<br>
 					<form class="link" action="" method="post" class="col-s12">
 						<div class="input-field row">
-							<div class="col col-xs-6 col-xs-offset-1 col-md-4 col-md-offset-3">
+							<div class="col col-xs-6 offset-xs-1 col-md-4 offset-md-3">
 								<input class="autocomplete link" id="persoon" name="peter" type="text" value="" >
 								<input class="autocomplete link" id="persoon" name="kind" type="text" value="">
 								</div>
@@ -59,7 +59,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="recuringTable col col-md-8 col-md-offset-2">
+				<div class="recuringTable col col-md-8 offset-md-2">
 					<h1>alle peter - meters</h1>
 					<table>
 						<tr>

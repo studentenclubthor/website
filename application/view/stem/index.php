@@ -1,20 +1,22 @@
 <div class="container">
 	<div class="row">
 		<div class="col col-md-12 text-center">
-			<div class="row">
+			<?php if(AUTHENTICATED){ echo
+			('<div class="row">
 				<div class ="col col-1 offset-sm-8">
-					<button class="btn waves-effect waves-light light-blue darken-4" onclick="popItUp('add')" style="margin-top: 20px;">
+					<button class="btn waves-effect waves-light light-blue darken-4" onclick="popItUp(' . "'" . "add". "'" .')" style="margin-top: 20px;">
 						<i class="material-icons right">add</i>
 					</button>
 				</div>
-			</div>
+			</div>'); } ?>
 			<div class="row">
-				<div class="popup Nshows" id="add" onclick="popItUp('add')">
+				<?php if(AUTHENTICATED){ echo
+				('<div class="popup Nshows" id="add" onclick="popItUp(' . "'" . "add". "'" .')">
 				</div>
 				<div class="col  col-sm-10 offset-sm-1 col-md-6 offset-md-3 Nshows myPopup add" id="add">
 					<h3>Add Stemming</h3>
 					<br>
-					<form action="<?php echo URL . 'stem\addStemming'; ?>" method="post" class="col-s12">
+					<form action="' . URL . 'stem\addStemming method="post" class="col-s12">
 						<div class="input-field row">
 							<div class="col col-xs-6 offset-sm-1 col-md-4 offset-md-3">
 								<input class="autocomplete" id="persoon" name="persoon" type="text" placeholder="Persoon" >
@@ -36,7 +38,7 @@
 							</button>
 						</div>
 					</form>
-				</div>
+				</div>'); }?>
 				<div class="popup Nshows" id="approve" onclick="popItUp('approve')">
 				</div>
 				<div class="col  col-xs-10 offset-sm-1 col-md-6 offset-md-3 Nshows myPopup approve" id="approve">
@@ -58,7 +60,7 @@
 						</div>
 					</form>
 				</div>
-			</div>
+			</div> 
 			<div class="row">
 				<div class="recuringTable col col-md-8 offset-md-2">
 					<h1>jou open stemmen</h1>
@@ -69,14 +71,12 @@
 							<th>titel</th>
 						</tr>
 						<?php 
-							// var_dump($stemmingen);
-							// exit;
 							foreach($stemmingen as $stemming ){
 							echo "<tr id='stemming" . $stemming->id ."'>" ;
 							echo "	<td>" . $stemming->voornaam . "</td>";
 							echo "	<td>" . $stemming->achternaam . "</td>";
 							echo "	<td>" . $stemming->doel . "</td>";
-							echo "	<td class='icon'><img class='icon' onclick='fill(" . '"' . "approve" . '",' . $stemming->id . ")'src='" . URL . "img/svg/bin.svg' /></a></td>";
+							echo "	<td class='icon'><img class='icon' onclick='fill(" . '"' . "approve" . '",' . $stemming->id . ")'src='" . URL . "img/svg/vote.svg' /></a></td>";
 							echo "</tr>" ;
 						}
 						?>

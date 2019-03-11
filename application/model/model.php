@@ -73,7 +73,26 @@ class Model
 		return $this->getPersById($ses['0']->idPersoon);
 	}
 	
+	public function getPersCookie(){
+		$ses = $this->getSession($_COOKIE['thorsessionid']);
+		return $this->getPersById($ses['0']->idPersoon);
+	}
+	
+	
 	//persoon
+	
+	public function IsPraesidium(){
+		$return = false;
+		if(isset($_COOKIE['thorsessionid'])){
+			$id = $this->getPersCookie();
+			$praesidia = $this->getCurrentPraesidia();
+			if($praesidia['0']->id == $id['0']->id){
+				$return = true;
+			}
+		}
+		return $return;
+	}
+	
 	public function getPersoon($name){
 		$sql = "SELECT * FROM Persoon where CONCAT(voornaam , ' ', achternaam) = ".'"' . $name .'"';
 		$query = $this->db->prepare($sql);
@@ -162,7 +181,7 @@ class Model
 	
 	//aanwezig
 	public function getAanwezigheden(){
-		$sql = "SELECT ";
+		$sql = "SELECT * from aanwezigheid";
 		$query = $this->db->prepare($sql);
 		$query->execute();
 		return $query->fetchAll();
@@ -317,7 +336,7 @@ order by rang, verkregen DESC"
 	}
 	
 	public function getCurrentPraesidia(){
-		$sql = "SELECT verkregen,voornaam,achternaam,naam,cleanName
+		$sql = "SELECT P.id,verkregen,voornaam,achternaam,naam,cleanName
 				FROM thor.houderschap h 
 				inner join persoon p on h.idpersoon = p.id
 				inner join titel t on h.idtitel = t.id
@@ -357,7 +376,23 @@ order by rang, verkregen DESC"
 		$sql = "select st.id,doel,voornaam,achternaam
 from stemming st left join persoon p on st.idpersoon = p.id
 where st.id not in (select st.id from stem s left join stemming st on s.idstemming = st.id
-					where s.idpersoon = :id)";
+					where s.idpersoon = :id)
+and eind > now()";
+		$query = $this->db->prepare($sql);
+        $parameters = array(':id' => $id,);
+        $query->execute($parameters);
+		return $query->fetchAll();
+	}
+	
+	public function getMyStem(){
+		$id = $this->getPersSess()['0']->id;
+		$sql = "SELECT *
+FROM stem s left join stemming st on s.idstemming = st.id
+left join persoon p on p.id = st.idpersoon
+left join (select idstemming,sum(boltz) as totaal
+		from stem
+		group by idstemming) tot on st.id = tot.idstemming
+where s.idpersoon = :id";
 		$query = $this->db->prepare($sql);
         $parameters = array(':id' => $id,);
         $query->execute($parameters);

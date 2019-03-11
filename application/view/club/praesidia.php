@@ -145,13 +145,18 @@
 		}
 	}
 	
-	check();
+	$(document).ready(check());
 	
-	$(window).scroll(function(){
-		check();
+	var scrolling = false;
+
+	$( window ).scroll( function() {
+	  scrolling = true;
 	});
-	
-	/*setInterval(function(){console.log(topBool);},1000);
-	setInterval(function(){console.log($(window).scrollTop());},1000);
-	setInterval(function(){console.log(($(window).scrollTop() < 900 && ! topBool));},1000);*/
+
+	setInterval( function() {
+	  if ( scrolling ) {
+		scrolling = false;
+		check();
+	  }
+	}, 250 );
 </script>

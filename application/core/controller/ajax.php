@@ -2,11 +2,14 @@
 
 class Ajax extends Controller
 {
-	public function loadModel(){
+	function __construct(){
+		parent::__construct();
         require APP . 'model/ajax_model.php';
         // create new "model" (and pass the database connection)
-        $this->model = new Ajax_model($this->db);
+        $this->ajax = new Ajax_model($this->db);
     }
+	
+	
 	
 	public function praesidiumLayout($praesidia){
 		$x = 0;
@@ -93,7 +96,7 @@ class Ajax extends Controller
 	public function praesidiaTop($quantity,$offset){
 		$parameters = array(':quantity' => (int)$quantity,':offset' => (int)$offset);
 		//print_r($parameters);
-		$result = ($this->model->selectParam("SELECT h.verkregen,voornaam,achternaam,naam,cleanName
+		$result = ($this->ajax->selectParam("SELECT h.verkregen,voornaam,achternaam,naam,cleanName
 				FROM thor.houderschap h 
 				join persoon p on h.idpersoon = p.id
 				join titel t on h.idtitel = t.id

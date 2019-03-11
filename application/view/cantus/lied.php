@@ -42,7 +42,7 @@
 		</div>
 	</div>
 	<div class="row" style="position:relative">
-		<div class="col-xs-11 col-xs-offset-1 col-md-6 col-md-offset-3 text-center">
+		<div class="col-xs-11 offset-xs-1 col-md-6 offset-md-3 text-center">
 			<?php 
 			if(isset($naam)){
 				$myfile = fopen("files/text/". $naam .".txt", "r") or die("Unable to open file!");
@@ -63,7 +63,7 @@
 			}
 			?>
 		</div>
-		<div class="col-xs-11 col-xs-offset-1 col-md-4 col-xs-offset-5 text-center liedinfo">
+		<div class="col-xs-11 offset-xs-1 col-md-4 offset-xs-5 text-center liedinfo">
 			<?php
 				echo "<img src=".'"'. URL ."img/schild/". $naam .".png".'"'." class='schild' />";
 			?>

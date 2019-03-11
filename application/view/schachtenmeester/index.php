@@ -4,12 +4,12 @@
 			<div class="row">
 				<div class="popup Nshows" id="edit" onclick="popItUp('edit')">
 				</div>
-				<div class="col  col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3 Nshows myPopup edit" id="edit">
+				<div class="col  col-xs-10 offset-xs-1 col-md-6 offset-md-3 Nshows myPopup edit" id="edit">
 					<h3>Edit persoon</h3>
 					<br>
 					<form class="link edit" action="" method="post" class="col-s12">
 						<div class="input-field row">
-							<div class="col col-xs-6 col-xs-offset-1 col-md-4 col-md-offset-3">
+							<div class="col col-xs-6 offset-xs-1 col-md-4 offset-md-3">
 								<input id="voornaam" name="voornaam" type="text" class="validate link edit" value="">
 								<input id="naam" name="naam" type="text" class="validate link edit" value="">
 								<input id="email" name="email" type="text" class="validate link edit" value="">
@@ -30,7 +30,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="recuringTable col col-md-8 col-md-offset-2">
+				<div class="recuringTable col col-md-8 offset-md-2">
 					<h1>alle schachten</h1>
 					<table>
 						<?php foreach($schachten as $schacht ){
