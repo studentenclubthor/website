@@ -24,6 +24,7 @@ class Application
 		// var_dump($_REQUEST);
 		// var_dump($_SERVER['QUERY_STRING']);
 		// echo($_GET['url']);
+		// var_dump($_POST);
 		// exit;
         // check for controller: no controller given ? then load start-page
         if (!$this->url_controller) {
