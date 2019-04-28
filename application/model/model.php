@@ -89,7 +89,7 @@ class Model
 		if(isset($_COOKIE['thorsessionid'])){
 			$id = $this->getPersCookie();
 			$praesidia = $this->getCurrentPraesidia();
-			if(praesidia){
+			if($praesidia){
 				if($praesidia['0']->id == $id['0']->id){
 					$return = true;
 				}
