@@ -22,7 +22,7 @@ class Auth extends Controller{
 				$_SESSION["DBSesionId"] = $_COOKIE['thorsessionid'];
 			}
 			else{
-				setcookie("thorsessionid", $cookie_value, time() - 10, "/");
+				setcookie("thorsessionid", '', time() - 10, "/");
 				header("Location: ". URL . "login");
 			}
 		}

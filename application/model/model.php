@@ -69,8 +69,11 @@ class Model
 	}
 	
 	public function getPersSess(){
-		$ses = $this->getSession($_SESSION['DBSesionId']);
-		return $this->getPersById($ses['0']->idPersoon);
+		if($_SESSION){
+			$ses = $this->getSession($_SESSION['DBSesionId']);
+			return $this->getPersById($ses['0']->idPersoon);
+		}
+		else{ return false;}
 	}
 	
 	public function getPersCookie(){
@@ -117,7 +120,7 @@ class Model
 	
 	
 	public function getPersonen(){
-		$sql = "SELECT id,voornaam,achternaam,email FROM Persoon";
+		$sql = "SELECT id,voornaam,achternaam,email FROM persoon";
 		$query = $this->db->prepare($sql);
 		$query->execute();
 		return $query->fetchAll();
@@ -379,16 +382,19 @@ order by rang, verkregen DESC"
 	}
 	
 	public function getOpenStem(){
-		$id = $this->getPersSess()['0']->id;
-		$sql = "select st.id,doel,voornaam,achternaam
-from stemming st left join persoon p on st.idpersoon = p.id
-where st.id not in (select st.id from stem s left join stemming st on s.idstemming = st.id
-					where s.idpersoon = :id)
-and eind > now()";
-		$query = $this->db->prepare($sql);
-        $parameters = array(':id' => $id,);
-        $query->execute($parameters);
-		return $query->fetchAll();
+		if($id = $this->getPersSess()){
+			$id = $id['0']->id;
+			$sql = "select st.id,doel,voornaam,achternaam
+	from stemming st left join persoon p on st.idpersoon = p.id
+	where st.id not in (select st.id from stem s left join stemming st on s.idstemming = st.id
+						where s.idpersoon = :id)
+	and eind > now()";
+			$query = $this->db->prepare($sql);
+			$parameters = array(':id' => $id,);
+			$query->execute($parameters);
+			return $query->fetchAll();
+		}
+		else{ return false;}
 	}
 	
 	public function getMyStem(){
