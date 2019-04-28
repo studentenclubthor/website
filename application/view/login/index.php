@@ -6,7 +6,7 @@ if(!empty($data['errors'])) {
 }
 ?>
 <br/>
-<div class="container user-form" style="float: left; width: 100%;">
+<div class="container user-form"">
 	<div class="row">
 		<div class="popup Nshows" id="create" onclick="popItUp('create')">
 		</div>

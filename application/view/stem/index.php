@@ -76,7 +76,7 @@
 							echo "	<td>" . $stemming->voornaam . "</td>";
 							echo "	<td>" . $stemming->achternaam . "</td>";
 							echo "	<td>" . $stemming->doel . "</td>";
-							echo "	<td class='icon'><img class='icon' onclick='fill(" . '"' . "approve" . '",' . $stemming->id . ")'src='" . URL . "img/svg/vote.svg' /></a></td>";
+							echo "	<td class='icon'><img class='icon' style='width:25px;' onclick='fill(" . '"' . "approve" . '",' . $stemming->id . ")'src='" . URL . "img/svg/vote.svg' /></a></td>";
 							echo "</tr>" ;
 						}
 						?>

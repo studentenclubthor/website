@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container text-center">
 	<div class="row">
 		<div class="col col-md-12 text-center">
 			<div class="row">
@@ -22,7 +22,7 @@
 							echo "	<td>" . $stem->boltz . "</td>";
 							echo "	<td>" . $stem->keuze . "</td>";
 							echo "	<td>" . $stem->totaal . "</td>";
-							echo "	<td class='icon'><img class='icon' onclick='fill(" . '"' . "approve" . '",' . $stem->id . ")'src='" . URL . "img/svg/vote.png' /></a></td>";
+							echo "	<td class='icon'><img class='icon' style='width:25px;' onclick='fill(" . '"' . "approve" . '",' . $stem->id . ")'src='" . URL . "img/svg/vote.png' /></a></td>";
 							echo "</tr>" ;
 						}
 						?>

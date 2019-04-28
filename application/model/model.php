@@ -51,7 +51,7 @@ class Model
 					setcookie($cookie_name, $cookie_value, time() + (7*24*60*60), "/");
 					$device = $_SERVER['HTTP_USER_AGENT'];
 					$ip = $_SERVER['REMOTE_ADDR'];
-					$query = $this->db->prepare('INSERT INTO `THOR`.`Sessie` (`cookie`, `idPersoon`, `device`, `ip`) VALUES (:cookie, :id, :device, :ip) ON DUPLICATE KEY UPDATE `cookie` = :cookie, `device` = :device, `ip` = :ip');
+					$query = $this->db->prepare('INSERT INTO `Sessie` (`cookie`, `idPersoon`, `device`, `ip`) VALUES (:cookie, :id, :device, :ip) ON DUPLICATE KEY UPDATE `cookie` = :cookie, `device` = :device, `ip` = :ip');
 					$parameters = array(':cookie' => $cookie_value, ':id' => $result->id, ':device' => $device, ':ip' => $ip);
 					$query->execute($parameters);
 					$result = $query->fetchAll();
@@ -325,7 +325,7 @@ order by rang, verkregen DESC"
 	//praesidium
 	public function getPraesidia(){
 		$sql = "SELECT verkregen,voornaam,achternaam,naam,cleanName
-				FROM thor.houderschap h 
+				FROM houderschap h 
 				inner join persoon p on h.idpersoon = p.id
 				inner join titel t on h.idtitel = t.id
 				where t.functie = 1
@@ -336,13 +336,13 @@ order by rang, verkregen DESC"
 	}
 	
 	public function getCurrentPraesidia(){
-		$sql = "SELECT P.id,verkregen,voornaam,achternaam,naam,cleanName
-				FROM thor.houderschap h 
+		$sql = "SELECT p.id,verkregen,voornaam,achternaam,naam,cleanName
+				FROM houderschap h 
 				inner join persoon p on h.idpersoon = p.id
 				inner join titel t on h.idtitel = t.id
 				WHERE t.functie = 1
 				AND verkregen = (SELECT max(verkregen)
-								FROM thor.houderschap h 
+								FROM houderschap h 
 								inner join titel t on h.idtitel = t.id
 								WHERE t.functie = 1
 								GROUP BY t.functie)
@@ -416,17 +416,17 @@ where s.idpersoon = :id";
 	
 	public function test(){
 		/*$sql = "SELECT max(verkregen)
-								FROM thor.houderschap h 
+								FROM houderschap h 
 								inner join titel t on h.idtitel = t.id
 								WHERE t.functie = 1
 								GROUP BY t.functie";*/
 		$sql = "SELECT verkregen,voornaam,achternaam,naam,cleanName
-				FROM thor.houderschap h 
+				FROM houderschap h 
 				inner join persoon p on h.idpersoon = p.id
 				inner join titel t on h.idtitel = t.id
 				WHERE t.functie = 1
 				AND verkregen in (SELECT max(verkregen)
-								FROM thor.houderschap h 
+								FROM houderschap h 
 								inner join titel t on h.idtitel = t.id
 								WHERE t.functie = 1
 								GROUP BY verkregen

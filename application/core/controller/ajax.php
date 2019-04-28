@@ -85,7 +85,7 @@ class Ajax extends Controller
 	
 	public function praesidia(){
 		return ($this->model->select("SELECT verkregen,voornaam,achternaam,naam,cleanName
-				FROM thor.houderschap h 
+				FROM houderschap h 
 				inner join persoon p on h.idpersoon = p.id
 				inner join titel t on h.idtitel = t.id
 				where t.functie = 1
@@ -97,11 +97,11 @@ class Ajax extends Controller
 		$parameters = array(':quantity' => (int)$quantity,':offset' => (int)$offset);
 		//print_r($parameters);
 		$result = ($this->ajax->selectParam("SELECT h.verkregen,voornaam,achternaam,naam,cleanName
-				FROM thor.houderschap h 
+				FROM houderschap h 
 				join persoon p on h.idpersoon = p.id
 				join titel t on h.idtitel = t.id
                 join (SELECT verkregen
-								FROM thor.houderschap h 
+								FROM houderschap h 
 								inner join titel t on h.idtitel = t.id
 								WHERE t.functie = 1
 								GROUP BY verkregen

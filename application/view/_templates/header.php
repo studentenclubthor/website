@@ -43,22 +43,22 @@
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i class="fa fa-list"></i> Cantussen</a>
 				<div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
-					<a class="nav-link bg-dark" href="<?php echo URL; ?>Cantus"><i class="fa fa-link"></i> Liederenboekjes</a>
-					<a class="nav-link bg-dark" href="<?php echo URL; ?>Cantus/liederen"><i class="fa fa-link"></i> Liederen</a>
+					<a class="nav-link bg-dark" href="<?php echo URL; ?>cantus"><i class="fa fa-link"></i> Liederenboekjes</a>
+					<a class="nav-link bg-dark" href="<?php echo URL; ?>cantus/liederen"><i class="fa fa-link"></i> Liederen</a>
 				</div>
 			</li>
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i class="fa fa-list"></i> Evenementen</a>
 				<div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
-					<a class="nav-link bg-dark" href="<?php echo URL; ?>Evenementen"><i class="fa fa-link"></i> Data</a>
-					<a class="nav-link bg-dark" href="<?php echo URL; ?>Evenementen/fotos"><i class="fa fa-link"></i> Foto's</a>
-					<a class="nav-link bg-dark" href="<?php echo URL; ?>Evenementen/thorDeLouvain"><i class="fa fa-link"></i> Thor de Louvain</a>
+					<a class="nav-link bg-dark" href="<?php echo URL; ?>evenementen"><i class="fa fa-link"></i> Data</a>
+					<a class="nav-link bg-dark" href="<?php echo URL; ?>evenementen/fotos"><i class="fa fa-link"></i> Foto's</a>
+					<a class="nav-link bg-dark" href="<?php echo URL; ?>evenementen/thorDeLouvain"><i class="fa fa-link"></i> Thor de Louvain</a>
 				</div>
 			</li>
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i class="fa fa-list"></i> Algemeen</a>
 				<div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
-					<a class="nav-link bg-dark" href="<?php echo URL; ?>Algemeen"><i class="fa fa-link"></i> Statuten</a>
+					<a class="nav-link bg-dark" href="<?php echo URL; ?>algemeen"><i class="fa fa-link"></i> Statuten</a>
 				</div>
 			</li><?php if(isset($_COOKIE["thorsessionid"])){
 				echo
@@ -101,8 +101,8 @@
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i class="fa fa-list"></i> H</a>
 						<div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
-							<a class="nav-link bg-dark" href="'. URL .'Heimdall"><i class="fa fa-link"></i> Rangen</a>
-							<a class="nav-link bg-dark" href="'. URL .'>Heimdall/Uitleg"><i class="fa fa-link"></i> Uitleg</a>
+							<a class="nav-link bg-dark" href="'. URL .'heimdall"><i class="fa fa-link"></i> Rangen</a>
+							<a class="nav-link bg-dark" href="'. URL .'>heimdall/Uitleg"><i class="fa fa-link"></i> Uitleg</a>
 						</div>
 					</li>');
 				}
