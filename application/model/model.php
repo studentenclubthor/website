@@ -51,7 +51,7 @@ class Model
 					setcookie($cookie_name, $cookie_value, time() + (7*24*60*60), "/");
 					$device = $_SERVER['HTTP_USER_AGENT'];
 					$ip = $_SERVER['REMOTE_ADDR'];
-					$query = $this->db->prepare('INSERT INTO `Sessie` (`cookie`, `idPersoon`, `device`, `ip`) VALUES (:cookie, :id, :device, :ip) ON DUPLICATE KEY UPDATE `cookie` = :cookie, `device` = :device, `ip` = :ip');
+					$query = $this->db->prepare('INSERT INTO `sessie` (`cookie`, `idPersoon`, `device`, `ip`) VALUES (:cookie, :id, :device, :ip) ON DUPLICATE KEY UPDATE `cookie` = :cookie, `device` = :device, `ip` = :ip');
 					$parameters = array(':cookie' => $cookie_value, ':id' => $result->id, ':device' => $device, ':ip' => $ip);
 					$query->execute($parameters);
 					$result = $query->fetchAll();
