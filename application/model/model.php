@@ -90,6 +90,7 @@ class Model
 			$id = $this->getPersCookie();
 			$praesidia = $this->getCurrentPraesidia();
 			if($praesidia){
+				var_dump($praesidia);
 				if($praesidia['0']->id == $id['0']->id){
 					$return = true;
 				}
@@ -358,7 +359,6 @@ order by rang, verkregen DESC"
 		$query = $this->db->prepare($sql);
 		$query->execute();
 		return $query->fetchAll();
-		
 	}
 	
 	public function getRequests(){
