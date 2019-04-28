@@ -78,7 +78,7 @@ class Model
 		if($ses){
 			return $this->getPersById($ses['0']->idPersoon);
 		}
-		else{ return $false;}
+		else{ return false;}
 	}
 	
 	
@@ -89,8 +89,13 @@ class Model
 		if(isset($_COOKIE['thorsessionid'])){
 			$id = $this->getPersCookie();
 			$praesidia = $this->getCurrentPraesidia();
-			if($praesidia['0']->id == $id['0']->id){
-				$return = true;
+			if(praesidia){
+				if($praesidia['0']->id == $id['0']->id){
+					$return = true;
+				}
+			}
+			else{
+				return false;
 			}
 		}
 		return $return;
