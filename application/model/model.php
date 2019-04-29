@@ -67,7 +67,7 @@ class Model
 	}
 	
 	public function getPersSess(){
-		if($_SESSION){
+		if(isset($_COOKIE['thorsessionid'])){
 			$ses = $this->getSession($_SESSION['DBSesionId']);
 			return $this->getPersById($ses['0']->idPersoon);
 		}
