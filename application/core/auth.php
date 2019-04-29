@@ -12,7 +12,8 @@ class Auth extends Controller{
 			$ifSessionExists = $this->model->checksession($_SESSION["DBSesionId"]);
 			if(! $ifSessionExists) {
 				session_destroy();
-				header("Location: ". URL . "login");
+				echo "no ses";
+				//header("Location: ". URL . "login");
 			}
 		}
 		else if(isset($_COOKIE['thorsessionid'])) {
@@ -23,12 +24,14 @@ class Auth extends Controller{
 			}
 			else{
 				setcookie("thorsessionid", '', time() - 10, "/");
-				header("Location: ". URL . "login");
+				echo "cookie";
+				//header("Location: ". URL . "login");
 			}
 		}
 		else {
 			$_SESSION["DBSesionId"] = "";
-			header("Location: ". URL . "login");
+			echo "else";
+			//header("Location: ". URL . "login");
 		}
 	  }
 	  
