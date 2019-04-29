@@ -54,6 +54,7 @@ class Model
 					$query = $this->db->prepare('INSERT INTO `sessie` (`cookie`, `idPersoon`, `device`, `ip`) VALUES (:cookie, :id, :device, :ip) ON DUPLICATE KEY UPDATE `cookie` = :cookie, `device` = :device, `ip` = :ip');
 					$parameters = array(':cookie' => $cookie_value, ':id' => $result->id, ':device' => $device, ':ip' => $ip);
 					$query->execute($parameters);
+					var_dump($parameters);
 					var_dump($query);
 					$result = $query->fetchAll();
 				}
