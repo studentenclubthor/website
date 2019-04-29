@@ -21,8 +21,8 @@
 							<div class="col col-xs-6 offset-sm-1 col-md-4 offset-md-3">
 								<input class="autocomplete" id="persoon" name="persoon" type="text" placeholder="Persoon" >
 								<input class="autocomplete" id="titel" name="titel" type="text" placeholder="titel" >
-								<input name="start" type="text" value="' . <?php echo date("Y-m-d H:i:s"); ?> . '" >
-								<input name="eind" type="text" value="' . <?php echo date("Y-m-d H:i:s"); ?> . '" >
+								<input name="start" type="text" value="'; echo date("Y-m-d H:i:s"); echo '" >
+								<input name="eind" type="text" value="' ; echo date("Y-m-d H:i:s"); echo . '" >
 								</div>
 							<div class="col col-xs-4 col-md-4">
 								<label for="voornaam">Persoon</label>
