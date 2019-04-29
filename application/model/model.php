@@ -114,7 +114,7 @@ class Model
 	}
 	
 	public function getPersById($id){
-		$sql = "SELECT * FROM Persoon where id = ". $id;
+		$sql = "SELECT * FROM persoon where id = ". $id;
 		$query = $this->db->prepare($sql);
 		$query->execute();
 		return $query->fetchAll();
