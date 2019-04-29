@@ -39,20 +39,19 @@ class Model
 		$result = $query->fetchAll();
 		if($result){
 			if($result['0']->confirmed == '1'){
-				session_start();
+				//session_start();
 				$result = $result[0];
 				// $data = array('sessionid' => $sessionid, 'user_id' => $result->id, 'device' => $_SERVER['HTTP_USER_AGENT'], 'ip' => $_SERVER['REMOTE_ADDR']);
-				$_SESSION["DBSesionId"] = $sessionid;
+				//$_SESSION["DBSesionId"] = $sessionid;
 				if(true/*$remember == "0"*/) {
 					$cookie_name = "thorsessionid";
-					$cookie_value = $sessionid;
 					$device = $_SERVER['HTTP_USER_AGENT'];
 					$ip = $_SERVER['REMOTE_ADDR'];
-					setcookie($cookie_name, $cookie_value, time() + (7*24*60*60), "/");
+					setcookie($cookie_name, $sessionid, time() + (7*24*60*60), "/");
 					$device = $_SERVER['HTTP_USER_AGENT'];
 					$ip = $_SERVER['REMOTE_ADDR'];
 					$query = $this->db->prepare('INSERT INTO `sessie` (`cookie`, `idPersoon`, `device`, `ip`) VALUES (:cookie, :id, :device, :ip) ON DUPLICATE KEY UPDATE `cookie` = :cookie, `device` = :device, `ip` = :ip');
-					$parameters = array(':cookie' => $cookie_value, ':id' => $result->id, ':device' => $device, ':ip' => $ip);
+					$parameters = array(':cookie' => $sessionid, ':id' => $result->id, ':device' => $device, ':ip' => $ip);
 					$query->execute($parameters);
 				}
 			}

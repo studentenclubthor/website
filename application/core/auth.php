@@ -8,28 +8,15 @@ class Auth extends Controller{
 		parent::__construct();
 		
 		
-		if(isset($_SESSION["DBSesionId"])) {
-			$ifSessionExists = $this->model->checksession($_SESSION["DBSesionId"]);
+		if(isset($_COOKIE['thorsessionid']) {
+			$ifSessionExists = $this->model->checksession($_COOKIE['thorsessionid']);
 			if(! $ifSessionExists) {
-				session_destroy();
-				echo "no ses";
-				//header("Location: ". URL . "login");
-			}
-		}
-		else if(isset($_COOKIE['thorsessionid'])) {
-			$ifCookieExists = $this->model->checksession($_COOKIE['thorsessionid']);
-			if($ifCookieExists) {
-				session_start();
-				$_SESSION["DBSesionId"] = $_COOKIE['thorsessionid'];
-			}
-			else{
 				setcookie("thorsessionid", '', time() - 10, "/");
-				echo "cookie";
+				echo "no cookie";
 				//header("Location: ". URL . "login");
 			}
 		}
 		else {
-			$_SESSION["DBSesionId"] = "";
 			echo "else";
 			//header("Location: ". URL . "login");
 		}
