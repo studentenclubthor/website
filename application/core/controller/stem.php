@@ -8,7 +8,7 @@ class Stem extends Auth{
 		$personen = $this->model->getPersonen();
 		$titels = $this->model->getTitels();
         require APP . 'view/_templates/header.php';
-        require APP . 'view/Stem/index.php';
+        require APP . 'view/stem/index.php';
         require APP . 'view/_templates/footer.php';
     }
 	
