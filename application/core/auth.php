@@ -10,13 +10,13 @@ class Auth extends Controller{
 		if(isset($_COOKIE['thorsessionid'])){
 			$ifSessionExists = $this->model->checksession($_COOKIE['thorsessionid']);
 			if(! $ifSessionExists) {
-				setcookie("thorsessionid", '', time() - 10, "/");
+				unset($_COOKIE['thorsessionid']);
 				echo "no cookie";
 				//header("Location: ". URL . "login");
 			}
 		}
 		else {
-			echo "else";
+			echo "else cookie";
 			//header("Location: ". URL . "login");
 		}
 	} 
